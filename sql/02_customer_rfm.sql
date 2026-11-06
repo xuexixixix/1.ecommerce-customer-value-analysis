@@ -19,7 +19,7 @@ rfm_scores AS (
         recency_days,
         frequency,
         monetary,
-        NTILE(5) OVER (ORDER BY recency_days ASC) AS r_score, -- 距离现在越近分越高
+        NTILE(5) OVER (ORDER BY recency_days DESC) AS r_score, -- 距离现在越近分越高
         NTILE(5) OVER (ORDER BY frequency ASC) AS f_score,     -- 频次越高分越高
         NTILE(5) OVER (ORDER BY monetary ASC) AS m_score       -- 金额越高分越高
     FROM customer_rfm
